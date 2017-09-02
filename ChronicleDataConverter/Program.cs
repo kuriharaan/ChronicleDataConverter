@@ -62,7 +62,7 @@ namespace CalendarQuickstart
             Console.WriteLine("Upcoming events:");
             if (events.Items != null && events.Items.Count > 0)
             {
-                System.IO.StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() + "/events.json", false);
+                System.IO.StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() + "/../../events.json", false);
 
                 sw.Write("{\n\"events\":[\n");
                 bool isNotFirst = false;
@@ -78,6 +78,7 @@ namespace CalendarQuickstart
                     {
                         when = eventItem.Start.Date;
                     }
+                    /*
                     Console.WriteLine("{0} ({1}) {2} {3} {4} {5}",
                                       eventItem.Summary,
                                       when,
@@ -86,8 +87,11 @@ namespace CalendarQuickstart
                                       eventItem.Location,
                                       eventItem.ETag
                                      );
+                                     */
                     sw.Write(string.Concat("{ \"date\": \"",
                                            eventItem.Start.Date, "\"",
+                                           ", \"location\" : \"",
+                                           eventItem.Location, "\"",
                                            ", \"summary\" : \"",
                                            eventItem.Summary, "\"",
                                            ", \"desc\" : \"",
